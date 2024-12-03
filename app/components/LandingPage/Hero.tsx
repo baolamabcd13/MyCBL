@@ -248,7 +248,7 @@ const Hero: React.FC = () => {
             width="50"
             height="50"
             viewBox="0 0 490.4 490.4"
-            className="fill-gray-700 hover:fill-[#dd363e] transition-colors duration-300 cursor-pointer"
+            className="fill-gray-700 hover:fill-[--primary-green] transition-colors duration-300 cursor-pointer"
           >
             <g>
               <path d="M245.2,490.4C110,490.4,0,380.4,0,245.2S110,0,245.2,0s245.2,110,245.2,245.2S380.4,490.4,245.2,490.4z M245.2,24.5c-121.7,0-220.7,99-220.7,220.7s99,220.7,220.7,220.7s220.7-99,220.7-220.7S366.9,24.5,245.2,24.5z" />
@@ -266,7 +266,7 @@ const Hero: React.FC = () => {
             width="50"
             height="50"
             viewBox="0 0 490.4 490.4"
-            className="fill-gray-700 hover:fill-[#dd363e] transition-colors duration-300 cursor-pointer"
+            className="fill-gray-700 hover:fill-[--primary-green] transition-colors duration-300 cursor-pointer"
           >
             <g>
               <path d="M245.2,490.4c135.2,0,245.2-110,245.2-245.2S380.4,0,245.2,0S0,110,0,245.2S110,490.4,245.2,490.4z M245.2,24.5c121.7,0,220.7,99,220.7,220.7s-99,220.7-220.7,220.7s-220.7-99-220.7-220.7S123.5,24.5,245.2,24.5z" />
