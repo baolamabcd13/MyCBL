@@ -1,15 +1,21 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
 const Hero: React.FC = () => {
   const slides = [
-    { src: "/images/Vifon_Confirm.jpg", alt: "Vifon Confirm" },
-    { src: "/images/Vifon_Master_Image.jpg", alt: "Vifon Master Image" },
-    { src: "/images/Vifon_Master_YouTube.jpg", alt: "Vifon Master YouTube" },
-    { src: "/images/KV_line_option.jpg", alt: "Kv Line Option" },
-    { src: "/images/Vifon_Thumbnail_1963.png", alt: "Vifon Thumbnail 1963" },
+    { src: "/images/banner/Vifon_Confirm.jpg", alt: "Vifon Confirm" },
+    { src: "/images/banner/Vifon_Master_Image.jpg", alt: "Vifon Master Image" },
+    {
+      src: "/images/banner/Vifon_Master_YouTube.jpg",
+      alt: "Vifon Master YouTube",
+    },
+    { src: "/images/banner/KV_line_option.jpg", alt: "Kv Line Option" },
+    {
+      src: "/images/banner/Vifon_Thumbnail_1963.png",
+      alt: "Vifon Thumbnail 1963",
+    },
   ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -17,6 +23,26 @@ const Hero: React.FC = () => {
   const scaleInterval = React.useRef<NodeJS.Timeout | null>(null);
   const [transitioning, setTransitioning] = useState(false);
   const [slideDirection, setSlideDirection] = useState(0);
+
+  useEffect(() => {
+    return () => {
+      if (scaleInterval.current) {
+        clearInterval(scaleInterval.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    const slideInterval = setInterval(() => {
+      if (!transitioning) {
+        nextSlide();
+      }
+    }, 3000);
+
+    return () => {
+      clearInterval(slideInterval);
+    };
+  }, [transitioning]);
 
   const nextSlide = () => {
     if (!transitioning) {
@@ -43,6 +69,10 @@ const Hero: React.FC = () => {
   };
 
   const handleMouseEnter = () => {
+    if (scaleInterval.current) {
+      clearInterval(scaleInterval.current);
+    }
+    setScale(1);
     scaleInterval.current = setInterval(() => {
       setScale((prev) => {
         if (prev >= 1.1) {
@@ -51,7 +81,7 @@ const Hero: React.FC = () => {
           }
           return 1.1;
         }
-        return prev + 0.0005;
+        return prev + 0.001;
       });
     }, 10);
   };
@@ -60,7 +90,17 @@ const Hero: React.FC = () => {
     if (scaleInterval.current) {
       clearInterval(scaleInterval.current);
     }
-    setScale(1);
+    scaleInterval.current = setInterval(() => {
+      setScale((prev) => {
+        if (prev <= 1) {
+          if (scaleInterval.current) {
+            clearInterval(scaleInterval.current);
+          }
+          return 1;
+        }
+        return prev - 0.001;
+      });
+    }, 10);
   };
 
   return (
@@ -236,7 +276,7 @@ const Hero: React.FC = () => {
         </div>
 
         {/* Add dots navigation */}
-        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex gap-2">
+        <div className="absolute bottom-[-20px] left-1/2 transform -translate-x-1/2 flex gap-2">
           {slides.map((_, index) => (
             <button
               key={index}

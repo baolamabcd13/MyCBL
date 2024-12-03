@@ -9,6 +9,17 @@ const NavBar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
   const [hoveredSubmenu, setHoveredSubmenu] = useState<string | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Add scroll event listener
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -21,8 +32,16 @@ const NavBar: React.FC = () => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md h-[120px] w-full">
-        <div className="container mx-auto flex items-center justify-between px-0 py-9">
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 bg-white shadow-md w-full transition-all duration-300 ${
+          isScrolled ? "h-[64px]" : "h-[120px]"
+        }`}
+      >
+        <div
+          className={`container mx-auto flex items-center justify-between px-0 transition-all duration-300 ${
+            isScrolled ? "py-2" : "py-9"
+          }`}
+        >
           <div className="flex items-center">
             <div
               className="flex items-center cursor-pointer"
@@ -62,9 +81,13 @@ const NavBar: React.FC = () => {
               </span>
             </div>
           </div>
-          <div className="logo absolute left-1/2 transform -translate-x-1/2">
+          <div className="logo absolute left-1/2 transform -translate-x-1/2 flex items-center h-full pb-2">
             <Link href="/">
-              <div className="w-20 h-20 bg-primary-green"></div>
+              <div
+                className={`bg-primary-green transition-all duration-300 ${
+                  isScrolled ? "w-[60px] h-[60px]" : "w-20 h-20"
+                }`}
+              ></div>
             </Link>
           </div>
           <div className="flex items-center space-x-8">
@@ -119,9 +142,9 @@ const NavBar: React.FC = () => {
 
       {/* Menu overlay - positioned below header */}
       <div
-        className={`fixed inset-0 z-40 pt-[9vw] ${
-          isOpen ? "animate-slideDown" : "animate-slideUp"
-        }`}
+        className={`fixed inset-0 z-40 transition-all duration-300 ${
+          isScrolled ? "pt-[64px]" : "pt-[9vw]"
+        } ${isOpen ? "animate-slideDown" : "animate-slideUp"}`}
       >
         <div
           className={`w-[560px] h-[calc(100vh-120px)] bg-primary-green relative overflow-auto scrollbar ${
