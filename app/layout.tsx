@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Baloo_2 } from "next/font/google";
 import "./globals.css";
+import NavBar from "./components/LandingPage/NavBar";
+import MainLayout from "./layouts/MainLayout/MainLayout";
 
-// Khởi tạo font Baloo với weight mặc định là 700
 const baloo = Baloo_2({
   subsets: ["vietnamese", "latin"],
   weight: "800",
@@ -16,12 +17,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body className={`${baloo.className} my-4 mx-12`}>{children}</body>
+      <body className={baloo.className}>
+        <NavBar />
+        <MainLayout>{children}</MainLayout>
+      </body>
     </html>
   );
 }
