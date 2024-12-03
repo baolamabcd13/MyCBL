@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-const Products: React.FC = () => {
+const ProductPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState("TRONG NƯỚC");
   const [currentPage, setCurrentPage] = useState(0);
   const [transitioning, setTransitioning] = useState(false);
@@ -352,4 +352,4 @@ const Products: React.FC = () => {
   );
 };
 
-export default Products;
+export default ProductPage;

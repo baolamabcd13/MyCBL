@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Baloo_2 } from "next/font/google";
 import "./globals.css";
-import NavBar from "./components/LandingPage/NavBar";
 import MainLayout from "./layouts/MainLayout/MainLayout";
+import Header from "./components/DefaultLayout/Header";
 
 const baloo = Baloo_2({
   subsets: ["vietnamese", "latin"],
@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={baloo.className}>
-        <NavBar />
+        <Header />
         <MainLayout>{children}</MainLayout>
       </body>
     </html>
