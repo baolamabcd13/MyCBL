@@ -1,9 +1,10 @@
-import NavBar from "@/app/components/LandingPage/NavBar";
+import Hero from "@/app/components/LandingPage/Hero";
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center">
-      <NavBar />
+      <Hero />
+      {/* Các components khác */}
     </main>
   );
 }

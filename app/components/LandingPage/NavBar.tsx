@@ -2,7 +2,8 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import "./NavBar.styles.css"; // Import file CSS
+import Image from "next/image";
+import "./NavBar.animation.css"; // Import file CSS
 
 const NavBar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,7 +22,7 @@ const NavBar: React.FC = () => {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md h-[120px] w-full">
-        <div className="container mx-auto flex items-center justify-between px-6 py-9">
+        <div className="container mx-auto flex items-center justify-between px-0 py-9">
           <div className="flex items-center">
             <div
               className="flex items-center cursor-pointer"
@@ -63,11 +64,7 @@ const NavBar: React.FC = () => {
           </div>
           <div className="logo absolute left-1/2 transform -translate-x-1/2">
             <Link href="/">
-              <img
-                src="/images/logo-tiengviet-chutdo.png"
-                alt="VIFON Logo"
-                className="h-28"
-              />
+              <div className="w-20 h-20 bg-primary-green"></div>
             </Link>
           </div>
           <div className="flex items-center space-x-8">
@@ -108,9 +105,11 @@ const NavBar: React.FC = () => {
               </svg>
             </div>
             <div className="cursor-pointer">
-              <img
+              <Image
                 src="/images/vie-flag.png"
                 alt="Vietnam"
+                width={56}
+                height={56}
                 className="w-14 h-14 rounded-full"
               />
             </div>
@@ -160,7 +159,7 @@ const NavBar: React.FC = () => {
                   activeSubmenu === "about" ? "max-h-[400px]" : "max-h-0"
                 }`}
               >
-                <ul className="text-2xl font-bold text-gray-800">
+                <ul className="text-3xl font-bold text-gray-700">
                   <li
                     className="px-[45px] py-2 hover:text-[--submenu-hover] transition-all duration-200"
                     onMouseEnter={() => setHoveredSubmenu("about")}
@@ -217,7 +216,7 @@ const NavBar: React.FC = () => {
                   activeSubmenu === "products" ? "max-h-[400px]" : "max-h-0"
                 }`}
               >
-                <ul className="text-2xl font-bold text-gray-800">
+                <ul className="text-3xl font-bold text-gray-700">
                   <li
                     className="px-[45px] py-2 hover:text-[--submenu-hover] transition-all duration-200"
                     onMouseEnter={() => setHoveredSubmenu("products")}
@@ -276,7 +275,7 @@ const NavBar: React.FC = () => {
                   activeSubmenu === "media" ? "max-h-[400px]" : "max-h-0"
                 }`}
               >
-                <ul className="text-2xl font-bold text-gray-800">
+                <ul className="text-3xl font-bold text-gray-700">
                   <li
                     className="px-[45px] py-2 hover:text-[--submenu-hover] transition-all duration-200"
                     onMouseEnter={() => setHoveredSubmenu("media")}
@@ -333,7 +332,7 @@ const NavBar: React.FC = () => {
                   activeSubmenu === "kitchen" ? "max-h-[400px]" : "max-h-0"
                 }`}
               >
-                <ul className="text-2xl font-bold text-gray-800">
+                <ul className="text-3xl font-bold text-gray-700">
                   <li
                     className="px-[45px] py-2 hover:text-[--submenu-hover] transition-all duration-200"
                     onMouseEnter={() => setHoveredSubmenu("kitchen")}
@@ -370,16 +369,20 @@ const NavBar: React.FC = () => {
             {/* Social media icons */}
             <div className="flex justify-center space-x-6 mt-12 pb-[30px]">
               <div>
-                <img
+                <Image
                   src="/images/Facebook_Icon.svg"
                   alt="Facebook"
+                  width={40}
+                  height={40}
                   className="w-10 h-10"
                 />
               </div>
               <div>
-                <img
+                <Image
                   src="/images/YouTube_Icon.svg"
                   alt="YouTube"
+                  width={40}
+                  height={40}
                   className="w-10 h-10"
                 />
               </div>

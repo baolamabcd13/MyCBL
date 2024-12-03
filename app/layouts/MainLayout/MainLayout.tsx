@@ -8,13 +8,19 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       {/* Top background */}
       <div
         className="absolute top-0 left-0 right-0 h-[500px] bg-no-repeat bg-cover bg-center z-0"
-        style={{ backgroundImage: 'url("/images/top.png")' }}
+        style={{
+          backgroundImage:
+            'url("https://vifon.com.vn/modules/main/images/main/bg-top.jpg")',
+        }}
       />
 
       {/* Bottom background */}
       <div
         className="absolute bottom-0 left-0 right-0 h-[500px] bg-no-repeat bg-cover bg-center z-0"
-        style={{ backgroundImage: 'url("/images/bottom.png")' }}
+        style={{
+          backgroundImage:
+            'url("https://vifon.com.vn/modules/main/images/main/bg-bottom.jpg ")',
+        }}
       />
 
       {/* Main content */}

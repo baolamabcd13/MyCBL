@@ -38,6 +38,7 @@ body {
     --submenu-hover: #f9edd7;
   }
   .dark {
+    --current: #808080;
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
     --card: 240 10% 3.9%;
